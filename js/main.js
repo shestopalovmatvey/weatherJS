@@ -16,8 +16,7 @@ let valueHumidity = document.querySelector('.value__humidity');
 
 let valueWind = document.querySelector('.value__wind');
 
-btnSearch.addEventListener('click', (evt) => {
-
+const searchWithClick = (evt) => {
     let city = input.value;
 
     if (city === '') return;
@@ -66,4 +65,17 @@ btnSearch.addEventListener('click', (evt) => {
             wind.textContent = items.wind_kph + 'Km/h';
         }
     });
-})
+}
+
+const searchWithEnter = (evt) => {
+    if (evt.keyCode === 13) {
+      evt.preventDefault();
+      searchWithClick();
+    }
+};
+
+
+
+document.addEventListener('keydown', searchWithEnter);
+
+btnSearch.addEventListener('click', searchWithClick);
